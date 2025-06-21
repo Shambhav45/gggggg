@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlayTrend</title>
+  <style>
+    :root {
+      --bg-color: #fdfdfd;
+      --text-color: #111;
+      --accent-color: #0077cc;
+      --card-bg: #ffffff;
+      --gray: #555;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .logo-img {
+      height: 40px;
+    }
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-color);
+      padding: 6px 8px;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+    }
+    .nav-links a:hover {
+      background: var(--accent-color);
+      color: #fff;
+    }
+    .nav-right {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    .subscribe-button {
+      padding: 8px 16px;
+      border: none;
+      background: var(--accent-color);
+      color: #fff;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .search-icon {
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .lang-toggle {
+      margin: 0 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+    main {
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 24px;
+    }
+    .lang-selector {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    .article {
+      margin-bottom: 60px;
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    }
+    .article img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin: 24px 0;
+    }
+    .article h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .article p {
+      line-height: 1.7;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      color: var(--gray);
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .lang-selector {
+        text-align: center;
+      }
+    }
+  </style>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script>
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      alert("Login successful! You’re subscribed.");
+    }
+    function showGoogleLogin() {
+      google.accounts.id.initialize({
+        client_id: "YOUR_GOOGLE_CLIENT_ID",
+        callback: handleCredentialResponse
+      });
+      google.accounts.id.prompt();
+    }
+
+    function toggleLanguage(lang) {
+      document.getElementById("en-article").style.display = lang === 'en' ? 'block' : 'none';
+      document.getElementById("hi-article").style.display = lang === 'hi' ? 'block' : 'none';
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="nav-left">
+      <img src="https://chat.openai.com/mnt/data/ChatGPT%20Image%20Jun%2021,%202025,%2004_58_45%20PM.PNG" alt="PlayTrend Logo" class="logo-img">
+      <div class="nav-links">
+        <a href="#">Security</a>
+        <a href="#">Politics</a>
+        <a href="#">The Big Story</a>
+        <a href="#">Business</a>
+        <a href="#">Science</a>
+        <a href="#">Culture</a>
+        <a href="#">Reviews</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="subscribe-button" onclick="showGoogleLogin()">Subscribe</button>
+      <span class="search-icon">🔍</span>
+    </div>
+  </nav>
+
+  <main>
+    <div class="lang-selector">
+      <span class="lang-toggle" onclick="toggleLanguage('en')">English</span>
+      <span class="lang-toggle" onclick="toggleLanguage('hi')">हिंदी</span>
+    </div>
+
+    <div id="en-article" class="article">
+      <h2>Honeymoon tragedy: Husband murdered in front of wife</h2>
+      <img src="https://source.unsplash.com/800x400/?crime,police" alt="crime scene image">
+      <p>A romantic honeymoon turned into a horrifying tragedy in Manali, when 29-year-old Aman Sharma was brutally stabbed to death in front of his wife. The couple had arrived just a day earlier to celebrate their recent marriage.</p>
+      <p>The incident occurred outside their hotel, where a verbal altercation with two unidentified men escalated into violence. According to witnesses, the suspects attacked Aman with knives and fled the scene. His wife screamed for help, but it was too late.</p>
+      <img src="https://source.unsplash.com/800x400/?sad,news" alt="grief image">
+      <p>The police are investigating CCTV footage and believe this may have been a planned attack. Locals are shocked and demand justice. The tourism industry has raised concerns about tourist safety in the region.</p>
+      <p>Social media is flooded with condolences and outrage. The couple’s family has flown to Manali and is in contact with authorities. The case continues to unfold, shedding light on the darker sides of even the most joyful occasions.</p>
+      <img src="https://source.unsplash.com/800x400/?couple,hotel" alt="couple hotel image">
+    </div>
+
+    <div id="hi-article" class="article" style="display:none">
+      <h2>हनीमून बना त्रासदी: पत्नी के सामने ही पति की हत्या</h2>
+      <img src="https://source.unsplash.com/800x400/?crime,police" alt="crime scene image">
+      <p>मनाली में एक नवविवाहित जोड़े का हनीमून दर्दनाक मोड़ पर तब बदल गया जब 29 वर्षीय अमन शर्मा की उसके होटल के बाहर बेरहमी से हत्या कर दी गई। वे सिर्फ एक दिन पहले ही पहुंचे थे।</p>
+      <p>स्थानीय चश्मदीदों के अनुसार, दो अज्ञात लोगों से मामूली बहस के बाद झगड़ा इतना बढ़ गया कि उन लोगों ने चाकुओं से अमन पर हमला कर दिया। पत्नी के सामने हुई इस घटना ने सभी को हिला दिया है।</p>
+      <img src="https://source.unsplash.com/800x400/?sad,news" alt="grief image">
+      <p>पुलिस सीसीटीवी फुटेज की जांच कर रही है और इसे एक सोची-समझी साजिश मान रही है। पूरे क्षेत्र में पर्यटकों की सुरक्षा पर सवाल उठ रहे हैं।</p>
+      <p>सोशल मीडिया पर गुस्से और शोक की लहर है। परिवार मनाली पहुंच चुका है और पुलिस से संपर्क में है। यह केस यह दिखाता है कि खुशियों के मौके भी कभी-कभी खौफनाक बन सकते हैं।</p>
+      <img src="https://source.unsplash.com/800x400/?couple,hotel" alt="couple hotel image">
+    </div>
+  </main>
+</body>
+</html>
